@@ -15,21 +15,6 @@ ul li {
   grid-template-columns: 2fr 10fr;
 }
 
-.header{
-  grid-area: h;
-  background-color: aqua;
-}
 
-.header img{
-  width: 30px;
-}
 
-.nav{
-  grid-area: n;
-  background-color:coral;
-}
 
-.content{
-  grid-area: c;
-  background-color: bisque;
-}
