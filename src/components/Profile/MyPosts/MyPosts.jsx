@@ -10,8 +10,9 @@ let postsElement=props.posts.map(p=><Post message={p.message} likeCount={p.likeC
 
   let newPostElement=React.createRef();
   let addPost=()=>{
+    debugger
     let text=newPostElement.current.value;
-    alert (text)
+    props.addPost (text)
   }
   return (
     <div className={s.PostsBlock}>
