@@ -34,7 +34,8 @@ let store = {
             { id: 5, message: 'Yo' },
             ],
             newMessageBody: ""
-        }
+        },
+        sidebar:{}
     },
     _callSubscriber() {
         console.log('State changed')
