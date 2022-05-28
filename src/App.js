@@ -8,7 +8,6 @@ import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 
 const App = (props) => {
-
   return (
     <BrowserRouter>
       <div className='app-wrapper'>
