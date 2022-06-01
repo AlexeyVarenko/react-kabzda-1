@@ -7,7 +7,6 @@ import sidebarReducer from "./sidebar-reducer";
 
 let store = {
     _state: {
-
         profilePage: {
             posts: [
                 { id: 1, message: 'Hi! How are you?', likeCount: 10 },
@@ -35,7 +34,7 @@ let store = {
             ],
             newMessageBody: ""
         },
-        sidebar:{}
+        sidebar: {}
     },
     _callSubscriber() {
         console.log('State changed')
@@ -47,12 +46,11 @@ let store = {
         this._callSubscriber = observer
     },
     dispatch(action) {
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.sidebarPage = sidebarReducer(this._state.sidebarPage, action);
 
-      this._state.profilePage=profileReducer(this._state.profilePage, action);
-      this._state.dialogsPage=dialogsReducer(this._state.dialogsPage, action);
-      this._state.sidebarPage=sidebarReducer(this._state.sidebarPage, action);
-
-      this._callSubscriber(this._state);
+        this._callSubscriber(this._state);
     }
 }
 
