@@ -4,7 +4,7 @@ const SET_USERS = 'SET_USERS'
 
 
 let initialState = {
-  users: [ ],
+  users: [],
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -40,20 +40,8 @@ const usersReducer = (state = initialState, action) => {
 
 }
 
-export const followAC = (userID) => {
-  return {
-    type: FOLLOW, userID
-  }
-}
-export const unfollowAC = (userID) => {
-  return {
-    type: UNFOLLOW, userID
-  }
-}
-export const setUsersAC = (users) => {
-  return {
-    type: SET_USERS, users
-  }
-}
+export const followAC = (userID) => ({type: FOLLOW, userID})
+export const unfollowAC = (userID) => ({type: UNFOLLOW, userID})
+export const setUsersAC = (users) => ({type: SET_USERS, users})
 
 export default usersReducer;

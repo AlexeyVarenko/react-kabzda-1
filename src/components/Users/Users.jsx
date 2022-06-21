@@ -2,8 +2,9 @@ import React from 'react';
 import styles from './users.module.css';
 
 let Users = (props) => {
-
+    debugger
     if (props.users.length === 0) {
+
         props.setUsers([
             {
                 id: 1, photoUrl: "https://img.freepik.com/free-photo/waist-up-portrait-of-handsome-serious-unshaven-male-keeps-hands-together-dressed-in-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer_273609-16320.jpg?w=996&t=st=1655029126~exp=1655029726~hmac=0c4a04f7c77bdcb203009a48a0993b1d4819bcaadfe323b115948a835288525e",
@@ -41,7 +42,7 @@ let Users = (props) => {
                         <div>{u.status}</div>
                     </span>
                     <span>
-                        <div>{u.location.countru}</div>
+                        <div>{u.location.country}</div>
                         <div>{u.location.city}</div>
                     </span>
                 </span>
@@ -50,4 +51,4 @@ let Users = (props) => {
     </div>
 }
 
-export default Users 
+export default Users
