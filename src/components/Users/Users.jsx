@@ -1,34 +1,26 @@
+import * as axios from 'axios';
 import React from 'react';
 import styles from './users.module.css';
+import userPhoto from '../../assets/images/user.png'
 
 let Users = (props) => {
-    debugger
     if (props.users.length === 0) {
 
-        props.setUsers([
-            {
-                id: 1, photoUrl: "https://img.freepik.com/free-photo/waist-up-portrait-of-handsome-serious-unshaven-male-keeps-hands-together-dressed-in-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer_273609-16320.jpg?w=996&t=st=1655029126~exp=1655029726~hmac=0c4a04f7c77bdcb203009a48a0993b1d4819bcaadfe323b115948a835288525e",
-                followed: false, fullName: 'Dmitry', status: 'I am a boss', location: { city: 'Minsk', country: 'Belarus' }
-            },
-            {
-                id: 2, photoUrl: "https://img.freepik.com/free-photo/waist-up-portrait-of-handsome-serious-unshaven-male-keeps-hands-together-dressed-in-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer_273609-16320.jpg?w=996&t=st=1655029126~exp=1655029726~hmac=0c4a04f7c77bdcb203009a48a0993b1d4819bcaadfe323b115948a835288525e",
-                followed: true, fullName: 'Sasha', status: 'I am a boss too', location: { city: 'Moscow', country: 'Russia' }
-            },
-            {
-                id: 3, photoUrl: "https://img.freepik.com/free-photo/waist-up-portrait-of-handsome-serious-unshaven-male-keeps-hands-together-dressed-in-dark-blue-shirt-has-talk-with-interlocutor-stands-against-white-wall-self-confident-man-freelancer_273609-16320.jpg?w=996&t=st=1655029126~exp=1655029726~hmac=0c4a04f7c77bdcb203009a48a0993b1d4819bcaadfe323b115948a835288525e",
-                followed: false, fullName: 'Andrew', status: 'I am a boss too', location: { city: 'Kiev', country: 'Ukraine' }
-            },
-        ]
-        )
-    }
 
+        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+
+            props.setUsers(response.data.items)
+        })
+
+
+    }
 
     return <div>
         {
             props.users.map(u => <div key={u.id}>
                 <span>
                     <div>
-                        <img src={u.photoUrl} className={styles.userPhoto} />
+                        <img src={u.photos.small != null ? u.photos.small : userPhoto} className={styles.userPhoto} />
                     </div>
                     <div>
                         {u.followed
@@ -38,12 +30,12 @@ let Users = (props) => {
                 </span>
                 <span>
                     <span>
-                        <div>{u.fullName}</div>
+                        <div>{u.name}</div>
                         <div>{u.status}</div>
                     </span>
                     <span>
-                        <div>{u.location.country}</div>
-                        <div>{u.location.city}</div>
+                        <div>{"u.location.country"}</div>
+                        <div>{"u.location.city"}</div>
                     </span>
                 </span>
             </div>)
