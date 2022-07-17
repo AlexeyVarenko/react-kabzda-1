@@ -1,6 +1,6 @@
 
 import { connect } from 'react-redux';
-import { follow, setCurrentPage, setUsers, setUsersTotalCount, toggleIsFetching, unfollow } from '../../redux/users-reducer';
+import { follow, setCurrentPage, setUsers, setTotalUsersCount, toggleIsFetching, unfollow } from '../../redux/users-reducer';
 import * as axios from 'axios';
 import React from 'react';
 import Users from './Users';
@@ -29,7 +29,6 @@ class UsersContainer extends React.Component {
     }
 
     render() {
-
         return <>
             {this.props.isFetching ? <Preloader /> : null}
             <Users
@@ -88,6 +87,6 @@ export default connect(mapStateToProps,
     unfollow,
     setUsers,
     setCurrentPage,
-    setUsersTotalCount,
+    setTotalUsersCount,
     toggleIsFetching,
     })(UsersContainer); 
