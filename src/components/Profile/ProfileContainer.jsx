@@ -22,15 +22,14 @@ class ProfileContainer extends React.Component {
     let userId = this.props.match.params.userId;
     if (!userId) {
       userId = this.props.authorizedUserId;
-      
+
     }
     this.props.getUserProfile(userId);
     this.props.getStatus(userId);
   }
 
   render() {
-
-
+    //console.log("RENDER PROFILE")
     return (
       <Profile {...this.props}
         profile={this.props.profile}
@@ -43,12 +42,15 @@ class ProfileContainer extends React.Component {
 
 let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
 
-let mapStateToProps = (state) => ({
-  profile: state.profilePage.profile,
-  status: state.profilePage.status,
-  authorizedUserId: state.auth.userId,
-  isAuth: state.auth.isAuth,
-})
+let mapStateToProps = (state) => {
+  //console.log("mapStateToProps PROFILE")
+  return ({
+    profile: state.profilePage.profile,
+    status: state.profilePage.status,
+    authorizedUserId: state.auth.userId,
+    isAuth: state.auth.isAuth,
+  })
+}
 
 
 export default compose(
